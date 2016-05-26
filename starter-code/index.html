@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MyApp">
     <head>
         <title>Fruit and Veggies</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -10,17 +10,38 @@
         <script src="js/app.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div ng-controller="HomeCtrl" class="container">
             <h1>Fruit and Veggies</h1>
             <div class="row">
                 <div class="col-sm-4">
-                    col 1
+                    <h3>FRUITS</h3>
+                    <ul style="list-style: none;">
+                        <li ng-class="{'bg-success': isThisFruit(fruit), 'bg-danger': !isThisFruit(fruit)}" class="fleshy" ng-repeat="fruit in fruits track by $index">
+                        <button class="btn btn-primary">&larr;</button>
+                            {{fruit}}
+                        <button class="btn btn-primary">&rarr;</button>
+                        </li>
+                    </ul>
+                </div>
+                <div  class="col-sm-4">
+                    <h3>WHO KNOWS</h3>
+                    <ul style="list-style: none;">
+                        <li  class="well fleshy" ng-repeat="flesh in fleshies track by $index">
+                        <button ng-click="fruitPath(flesh)" class="btn btn-primary">&larr;</button>
+                            {{flesh}}
+                        <button ng-click="veggiePath(flesh)" class="btn btn-primary">&rarr;</button>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-sm-4">
-                    col 2
-                </div>
-                <div class="col-sm-4">
-                    col 3
+                    <h3>VEGGIES</h3>
+                    <ul style="list-style: none;">
+                        <li ng-class="{'bg-success': isThisVeggie(veggie), 'bg-danger': !isThisVeggie(veggie)}" class=" fleshy" ng-repeat="veggie in vegmasters track by $index" >
+                        <button class="btn btn-primary">&larr;</button>
+                            {{veggie}}
+                        <button class="btn btn-primary">&rarr;</button>
+                        </li>
+                    </ul>
                 </div>                        
             </div>
         </div>
